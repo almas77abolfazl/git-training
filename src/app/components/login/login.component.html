@@ -1,0 +1,12 @@
+<main class="login" (keyup.enter)="login(username.value, password.value)">
+  <div class="field">
+    <label for="">username</label>
+    <input #username type="text" name="username" id="" autocomplete="off"/>
+  </div>
+
+  <div class="field">
+    <label for="">password</label>
+    <input #password type="text" name="password" id="" autocomplete="off" />
+  </div>
+  <button (click)="login(username.value, password.value)">Login</button>
+</main>
