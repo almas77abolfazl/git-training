@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Injectable({ providedIn: 'root' })
-export class AdminGuard implements CanActivate {
+export class AdminGuard implements CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     const canActivate = !!this.authService.currentUser;
     if (!canActivate) {
       alert("You don't have access to this page");

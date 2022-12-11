@@ -8,7 +8,7 @@ import { ProfilesService } from '../profiles.service';
   styleUrls: ['./profiles.component.scss'],
 })
 export class ProfilesComponent implements OnInit {
-  profilesIds = this.profilesService.profiles.map((x) => x.id);
+  profilesIds: number[] = this.profilesService.profiles.map((x) => x.id);
   constructor(
     private router: Router,
     private profilesService: ProfilesService
